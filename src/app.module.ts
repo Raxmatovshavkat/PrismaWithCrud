@@ -10,10 +10,10 @@ import { PrismaService } from '../prisma/prisma.service';
 
 
 @Module({
-  imports: [ThrottlerModule.forRoot({
+  imports: [ThrottlerModule.forRoot([{
     ttl: 60,
     limit: 10,
-  }), UserModule, ModelModule, CompanyModule, FileModule, CarModule, TransactionModule],
+  }]), UserModule, ModelModule, CompanyModule, FileModule, CarModule, TransactionModule],
   controllers: [],
   providers: [PrismaService],
 })
