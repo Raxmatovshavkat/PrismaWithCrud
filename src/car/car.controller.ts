@@ -8,27 +8,27 @@ export class CarController {
   constructor(private readonly carService: CarService) {}
 
   @Post()
-  create(@Body() createCarDto: CreateCarDto) {
+  async create(@Body() createCarDto: CreateCarDto) {
     return this.carService.create(createCarDto);
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.carService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.carService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
+  async update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
     return this.carService.update(+id, updateCarDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.carService.remove(+id);
   }
 }

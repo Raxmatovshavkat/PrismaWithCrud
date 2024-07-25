@@ -1,9 +1,9 @@
-import { IsString } from 'class-validator';
+import { IsString, IsInt } from 'class-validator';
 
 export class CreateModelDto {
     @IsString()
     readonly name: string;
 
-    @IsString()
-    readonly companyId: string;
+    @IsInt()
+    readonly companyId: number;
 }

@@ -1,5 +1,4 @@
-import { IsString, IsEnum, IsOptional } from 'class-validator';
-import { Role } from '@prisma/client';
+import { IsString } from 'class-validator';
 
 export class CreateCompanyDto {
     @IsString()
@@ -8,6 +7,6 @@ export class CreateCompanyDto {
     @IsString()
     readonly logo: string;
 
-    @IsString()
-    readonly ownerId: string;
+    @IsString() 
+    readonly ownerId: number;
 }

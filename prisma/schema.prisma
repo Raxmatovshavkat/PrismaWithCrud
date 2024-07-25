@@ -7,7 +7,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// File model
+
 model File {
   id              Int      @id @default(autoincrement())
   url             String
@@ -21,30 +21,33 @@ model File {
   @@map("file")
 }
 
-// User model
+
 model User {
-  id              Int          @id @default(autoincrement())
-  phone           String
+  id              Int            @id @default(autoincrement())
+  email           String         @unique
+  password        String
+  phone           String         @unique
   full_name       String
-  avatar          String
+  avatar          String?
   role            Role
-  created_at      DateTime     @default(now()) @map("created_at")
-  last_edited_at  DateTime     @updatedAt @map("last_edited_at")
-  companies       Company[]    @relation("CompanyOwner")
-  transactions    Transaction[] 
+  created_at      DateTime       @default(now())
+  last_edited_at  DateTime       @updatedAt
+  companies       Company[]      @relation("CompanyOwner")
+  transactions    Transaction[]
 
   @@map("user")
 }
 
-// Company model
+
+
 model Company {
-  id              Int         @id @default(autoincrement())
+  id              Int            @id @default(autoincrement())
   name            String
-  owner           Int         @map("owner")
+  owner           Int            @map("owner")
   logo            String
-  created_at      DateTime    @default(now()) @map("created_at")
-  last_edited_at  DateTime    @updatedAt @map("last_edited_at")
-  ownerUser       User        @relation("CompanyOwner", fields: [owner], references: [id])
+  created_at      DateTime       @default(now()) @map("created_at")
+  last_edited_at  DateTime       @updatedAt @map("last_edited_at")
+  ownerUser       User           @relation("CompanyOwner", fields: [owner], references: [id])
   models          Model[]
   cars            Car[]
   transactions    Transaction[]
@@ -52,7 +55,7 @@ model Company {
   @@map("company")
 }
 
-// Model model
+
 model Model {
   id              Int       @id @default(autoincrement())
   name            String
@@ -65,7 +68,7 @@ model Model {
   @@map("model")
 }
 
-// Car model
+
 model Car {
   id              Int        @id @default(autoincrement())
   name            String
@@ -82,7 +85,6 @@ model Car {
   @@map("car")
 }
 
-// Transaction model
 model Transaction {
   id              Int        @id @default(autoincrement())
   company_id      Int        @map("company_id")
@@ -105,7 +107,7 @@ model Transaction {
   @@map("transaction")
 }
 
-// Enum for user roles
+
 enum Role {
   client
   owner
@@ -113,7 +115,6 @@ enum Role {
   admin
 }
 
-// Enum for transaction status
 enum Status {
   debit
   credit

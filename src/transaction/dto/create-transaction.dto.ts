@@ -1,19 +1,19 @@
-import { IsString, IsInt, IsEnum, IsJSON } from 'class-validator';
-import { TransactionStatus } from '@prisma/client';
-
+import { IsString, IsInt, IsEnum, IsJSON, IsDate } from 'class-validator';
+import { Type } from 'class-transformer';
+import { Status } from '@prisma/client';
 
 export class CreateTransactionDto {
-    @IsString()
-    readonly companyId: string;
+    @IsInt()
+    readonly companyId: number;
 
-    @IsString()
-    readonly userId: string;
+    @IsInt()
+    readonly userId: number;
 
     @IsJSON()
     readonly userData: any;
 
-    @IsString()
-    readonly carId: string;
+    @IsInt()
+    readonly carId: number;
 
     @IsJSON()
     readonly carData: any;
@@ -21,18 +21,20 @@ export class CreateTransactionDto {
     @IsInt()
     readonly price: number;
 
-    @IsString()
+    @IsDate()
+    @Type(() => Date)
     readonly startDate: Date;
 
-    @IsString()
+    @IsDate()
+    @Type(() => Date)
     readonly endDate: Date;
 
-    @IsEnum(TransactionStatus)
-    readonly status: TransactionStatus;
+    @IsEnum(Status)
+    readonly status: Status;
 
-    @IsString()
-    readonly createdById: string;
+    @IsInt()
+    readonly createdById: number;
 
-    @IsString()
-    readonly lastEditedById: string;
+    @IsInt()
+    readonly lastEditedById: number;
 }
