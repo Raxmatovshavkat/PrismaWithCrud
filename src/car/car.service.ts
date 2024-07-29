@@ -13,7 +13,7 @@ export class CarService {
         name: createCarDto.name,
         model_id: Number(createCarDto.modelId),
         company_id: Number(createCarDto.companyId),
-        info: createCarDto.info || '', // Optional field
+        info: createCarDto.info || '', 
       }
     });
   }

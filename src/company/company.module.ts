@@ -4,7 +4,7 @@ import { CompanyController } from './company.controller';
 import { PrismaService } from 'prisma/prisma.service';
 
 @Module({
-  imports:[PrismaService],
+  imports:[],
   controllers: [CompanyController],
   providers: [CompanyService,PrismaService],
 })

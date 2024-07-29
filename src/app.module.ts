@@ -6,7 +6,6 @@ import { FileModule } from './file/file.module';
 import { CarModule } from './car/car.module';
 import { TransactionModule } from './transaction/transaction.module';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { PrismaService } from '../prisma/prisma.service';
 import { AuthModule } from './auth/auth.module';
 
 
@@ -16,6 +15,6 @@ import { AuthModule } from './auth/auth.module';
     limit: 10,
   }]), UserModule, ModelModule, CompanyModule, FileModule, CarModule, TransactionModule, AuthModule],
   controllers: [],
-  providers: [PrismaService],
+  providers: [],
 })
 export class AppModule { }
